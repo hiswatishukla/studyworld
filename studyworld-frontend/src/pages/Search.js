@@ -21,7 +21,7 @@ const Search = () => {
 
   return (
     <div className="search-container">
-      <h2>Search for a User</h2>
+      <h2>Search User</h2>
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"

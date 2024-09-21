@@ -1,60 +1,76 @@
 import React, { useState } from 'react';
-import { registerUser } from '../services/userService';
-import './UserForm.css';
+import axios from 'axios';  // Assuming you're using Axios for HTTP requests
+import './UserForm.css';  // Import the CSS for styling
 
 const UserForm = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('ROLE_STUDENT');
+  const [userData, setUserData] = useState({
+    username: '',
+    email: '',
+    password: ''
+  });
   const [message, setMessage] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      [name]: value
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUser = { username, email, password, role };
     try {
-      const response = await registerUser(newUser);
-      setMessage(`User ${response.data.username} registered successfully!`);
-      setUsername('');
-      setEmail('');
-      setPassword('');
+      const response = await axios.post('/api/users/register', userData);
+      setMessage('User registered successfully!');
     } catch (error) {
-      setMessage('Error registering user');
+      console.error('Error registering user:', error);
+      setMessage('Failed to register user.');
     }
   };
 
   return (
     <div className="user-form">
-      <h2>Register User</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="ROLE_STUDENT">Student</option>
-          <option value="ROLE_INSTRUCTOR">Instructor</option>
-        </select>
+        <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={userData.username}
+            onChange={handleChange}
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={userData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={userData.password}
+            onChange={handleChange}
+            placeholder="Create a password"
+            required
+          />
+        </div>
         <button type="submit">Register</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
     </div>
   );
 };

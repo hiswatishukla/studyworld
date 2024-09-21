@@ -1,0 +1,66 @@
+.instructors-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.instructor-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.instructor-form input, .instructor-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.instructor-form button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.instructor-form button:hover {
+    background-color: #2980b9;
+}
+
+.message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.instructor-list {
+    list-style: none;
+    padding: 0;
+}
+
+.instructor-list li {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+.instructor-list li strong {
+    color: #2c3e50;
+}

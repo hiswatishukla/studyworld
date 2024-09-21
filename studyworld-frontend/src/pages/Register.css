@@ -1,0 +1,30 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f3f5;
+  }
+  
+  .register-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .register-box h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  .register-box p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+  }
+  
